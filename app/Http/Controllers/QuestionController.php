@@ -71,7 +71,7 @@ class QuestionController extends Controller
      */
     public function edit(Question $question)
     {
-        //
+        return view('questions.edit',['question'=>$question]);
     }
 
     /**
@@ -83,7 +83,13 @@ class QuestionController extends Controller
      */
     public function update(Request $request, Question $question)
     {
-        //
+      $request->validate([
+        'title'=>'required',
+        'body' => 'required|max:255'
+      ]);
+
+      $question->update($request->only('title','body'));
+      return redirect()->route('questions.index')->with('success','You question has been updated!');
     }
 
     /**
