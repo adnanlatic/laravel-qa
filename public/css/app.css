@@ -10899,6 +10899,10 @@ strong {
   font-size: 2em;
 }
 
+.form-delete {
+  display: inline;
+}
+
 .status.unanswered {
   border: none;
 }
