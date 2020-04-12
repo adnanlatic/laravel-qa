@@ -45,8 +45,11 @@ class QuestionController extends Controller
     {
         $request->validate([
           'title'=>'required',
-          'body' => 'required'
+          'body' => 'required|max:255'
         ]);
+
+        $request->user()->questions()->create($request->only('title','body'));
+        return redirect()->route('questions.index')->with('success','Your question has been submited!');
     }
 
     /**
