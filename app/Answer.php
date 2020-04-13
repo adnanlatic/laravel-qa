@@ -2,6 +2,8 @@
 
 namespace App;
 
+use Parsedown;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 
 class Answer extends Model
