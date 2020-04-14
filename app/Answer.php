@@ -21,6 +21,17 @@ class Answer extends Model
     return Parsedown::instance()->text($this->body);
   }
 
+  public function isBest(){
+    return $this->id == $this->question->best_answer_id;
+  }
+
+  public function getStatusAttribute(){
+    return $this->isBest() ? 'vote-accepted' : '';
+  }
+  public function getIsBestAttribute(){
+    return $this->isBest();
+  }
+
   public static function boot(){
     parent::boot();
 
