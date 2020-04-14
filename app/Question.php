@@ -51,5 +51,25 @@ class Question extends Model
       return Parsedown::instance()->text($this->body);
     }
 
+    public function favourites()
+    {
+        return $this->belongsToMany(User::class, 'favourites')->withTimestamps(); //, 'question_id', 'user_id');
+    }
+
+    public function isFavourited()
+    {
+        return $this->favourites()->where('user_id', auth()->id())->count() > 0;
+    }
+
+    public function getIsFavouritedAttribute()
+    {
+        return $this->isFavourited();
+    }
+
+    public function getFavouritesCountAttribute()
+    {
+        return $this->favourites->count();
+    }
+
 
 }

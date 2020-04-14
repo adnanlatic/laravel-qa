@@ -33,14 +33,14 @@
       color: $gray-500;
     }
 
-    &.favorite {
+    &.favourite {
     &.favourite, &.favourite:hover{
       color: $warning;
     }
   }
   &.vote-accepted{
     color: $green;
-    
+
   }
 }
 

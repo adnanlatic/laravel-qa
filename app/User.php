@@ -57,4 +57,9 @@ class User extends Authenticatable
 
     }
 
+    public function favourites()
+{
+    return $this->belongsToMany(Question::class, 'favourites')->withTimestamps(); //, 'author_id', 'question_id');
+}
+
 }
