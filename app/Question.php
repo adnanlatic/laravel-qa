@@ -18,6 +18,11 @@ class Question extends Model
       return $this->hasMany('App\Answer');
     }
 
+    public function acceptBestAnswer(Answer $answer){
+      $this->best_answer_id = $answer->id;
+      $this->save();
+    }
+
     public function setTitleAttribute($value){
        $this->attributes['title'] = $value;
        $this->attributes['slug'] = Str::slug($value);
