@@ -27,11 +27,12 @@
                                class="favourite mt-2 {{ Auth::guest() ? 'off' : ($question->is_favourited ? 'favourited' : '') }}"
                                onclick="event.preventDefault(); document.getElementById('favourite-question-{{ $question->id }}').submit();"
                                >
-                               <span class="favorites-count">{{ $question->favorites_count }}</span>
+                               <i class="fa fa-star fa-2x"></i>
+                               <span class="favourites-count">{{ $question->favourites_count }}</span>
                       </a>
                       <form id="favourite-question-{{ $question->id }}" action="/questions/{{ $question->id }}/favourites" method="POST" style="display:none;">
                                 @csrf
-                                @if ($question->is_favorited)
+                                @if ($question->is_favourited)
                                     @method ('DELETE')
                                 @endif
                             </form>
