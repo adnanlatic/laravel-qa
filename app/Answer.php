@@ -9,12 +9,19 @@ use Illuminate\Database\Eloquent\Model;
 class Answer extends Model
 {
   protected $fillable = ['body','user_id'];
+
+  protected $appends = ['created_date'];
+
   public function question(){
     return $this->belongsTo('App\Question');
   }
 
   public function user(){
     return $this->belongsTo('App\User');
+  }
+
+  public function getCreatedDateAttribute(){
+    return $this->created_at->diffForHumans();
   }
 
   public function getBodyHtmlAttribute(){
